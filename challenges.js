@@ -9,6 +9,7 @@ Change the game to follow these rules:
 var scores, roundScore, activePlayer, gamePlaying;
 
 init();
+dicenone();
 
 var lastDice;
 
@@ -59,8 +60,7 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
         // Check if player won the game
         if (scores[activePlayer] >= winningScore) {
             document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
-            document.getElementById('dice-1').style.display = 'none';
-            document.getElementById('dice-2').style.display = 'none';
+            dicenone();
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
             document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
             gamePlaying = false;
@@ -83,8 +83,7 @@ function nextPlayer() {
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
 
-    document.getElementById('dice-1').style.display = 'none';
-    document.getElementById('dice-2').style.display = 'none';
+    dicenone();
 }
 
 document.querySelector('.btn-new').addEventListener('click', init);
@@ -95,8 +94,7 @@ function init() {
     roundScore = 0;
     gamePlaying = true;
 
-    document.getElementById('dice-1').style.display = 'none';
-    document.getElementById('dice-2').style.display = 'none';
+    dicenone();
 
     document.getElementById('score-0').textContent = '0';
     document.getElementById('score-1').textContent = '0';
@@ -109,4 +107,9 @@ function init() {
     document.querySelector('.player-0-panel').classList.remove('active');
     document.querySelector('.player-1-panel').classList.remove('active');
     document.querySelector('.player-0-panel').classList.add('active');
+}
+
+function dicenone() {
+    document.getElementById('dice-1').style.display = 'none';
+    document.getElementById('dice-2').style.display = 'none';
 }
